@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
-// TODO : 재귀로 풀어보기. 
+// DONE : 재귀로 풀어보기. 
 
-int room[15][15]={0};
 
 int cumulative_sum(int);
 int ans (int,int);
