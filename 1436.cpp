@@ -17,7 +17,7 @@ int ans(int num) {
   int title_num = 1;
   while (title_num++) {
     string s = to_string(title_num);
-    if (s.find("666") != -1) cnt++;
+    if (s.find("666") != string::npos) cnt++;
     if (cnt == num)
       return title_num;
     else
