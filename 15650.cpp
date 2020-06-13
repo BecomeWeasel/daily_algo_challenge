@@ -42,7 +42,7 @@ void dfs(int num, int len, int range, stack<int> s, bool select) {
 }
 
 bool isPromising(int num, int s_size, int len) {
-  if (s_size >= len)
+  if (s_size == len)
     return false;
   else
     return true;
