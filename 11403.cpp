@@ -12,7 +12,7 @@ vector<vector<int>> result(MAX, vector<int>(MAX, 0));
 
 void ans();
 
-void dfs(int, int, int);
+void dfs(int, int);
 
 int main(void) {
   cin >> num;
@@ -28,12 +28,9 @@ int main(void) {
 
 void ans() {
   for (int i = 0; i < num; i++) {
-    for (int j = 0; j < num; j++) {
-      if (!is_visited[i][j] && vector_2d[i][j]) {
-        dfs(i, i, j);
-      }
-    }
+    dfs(i, i);
   }
+
 
   for (int i = 0; i < num; i++) {
     for (int j = 0; j < num; j++) {
@@ -43,12 +40,11 @@ void ans() {
   }
 }
 
-void dfs(int top, int src, int dest) {
-  result[top][dest] = 1;
-  is_visited[top][dest] = true;
-  for (int i = 0; i < num; i++) {
-    if (!is_visited[top][i] && vector_2d[dest][i]) {
-      dfs(top, dest, i);
+void dfs(int src, int dest) {
+  for (int j = 0; j < num; j++) {
+    if (vector_2d[dest][j] && !result[src][j]) {
+      result[src][j]=1;
+      dfs(src, j);
     }
   }
 }
