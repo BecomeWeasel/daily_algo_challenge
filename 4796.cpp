@@ -18,7 +18,8 @@ int main(void) {
 int ans() {
   int i = (V/P*P)+1;
   int cnt = V/P*L;
-  int conseq_night=V%P>L?L:V%P;
+  int conseq_night=V-V/P*P>L?L:V-V/P*P;
+  // int conseq_night=V%P>L?L:V%P;
 
   
   return cnt+conseq_night;
