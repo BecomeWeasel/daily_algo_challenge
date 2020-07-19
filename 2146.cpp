@@ -118,6 +118,7 @@ void bridge_bfs(queue<pair<pair<int, int>, int>> q, int area_label) {
         map[front.first.first][front.first.second] != area_label) {
       // 다리 길이 업데이트
       min_dist = min(min_dist, front.second);
+      return;
     }
 
     for (int i = 0; i < 4; i++) {
