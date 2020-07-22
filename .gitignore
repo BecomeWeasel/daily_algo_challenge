@@ -1,8 +1,12 @@
 # Ignore all
 *
 
+
 # Include soruce code
 !*.c
 !*.cpp
 !baekjoon
 !programmers
+
+# test.cpp
+test.cpp
