@@ -13,14 +13,14 @@ int N, M, S, E;
 
 // teleport[i] : i번에서 teleport[i]번으로 이어짐. -1이면 텔레포트가 없음
 bool visited[N_MAX];
-int teleport[N_MAX];
+vector<int> teleport[N_MAX] = {};
 
 int ans();
 
 int bfs(queue<pair<int, int>>);
 
 int main(void) {
-  memset(teleport, -1, sizeof(teleport));
+  // memset(teleport, -1, sizeof(teleport));
   memset(visited, false, sizeof(visited));
 
   cin >> N >> M >> S >> E;
@@ -28,7 +28,8 @@ int main(void) {
   for (int i = 0; i < M; i++) {
     int src, dest;
     cin >> src >> dest;
-    teleport[src] = dest;
+    teleport[src].push_back(dest);
+    teleport[dest].push_back(src);
   }
   cout << ans();
 }
@@ -48,18 +49,23 @@ int bfs(queue<pair<int, int>> q) {
     pair<int, int> front = q.front();
     q.pop();
 
+    /*
+    if (front.first == E) {
+      return front.second;
+    }*/
+
     // 텔레포트를 할 수 있고 그 지점을 방문하지 않았다면
-    if (teleport[front.first] != -1 && !visited[teleport[front.first]]) {
-      // 텔레포트를 해서 도착할 수 있다면
-      if (teleport[front.first] == E) {
-        // 현재시간에서 텔레포트하는 시간까지 포함해서 결과
-        return front.second + 1;
-      } else {
-        q.push(make_pair(teleport[front.first], front.second + 1));
-        visited[teleport[front.first]] = true;
+    for (int i = 0; i < teleport[front.first].size(); i++) {
+      if (!visited[teleport[front.first][i]]) {
+        if (teleport[front.first][i] == E) {
+          return front.second + 1;
+        } else {
+          q.push(make_pair(teleport[front.first][i], front.second + 1));
+          visited[teleport[front.first][i]] = true;
+        }
       }
     }
-    if (front.first + 1 <= N_MAX && !visited[front.first + 1]) {
+    if (front.first + 1 <= N && !visited[front.first + 1]) {
       if (front.first + 1 == E) {
         return front.second + 1;
       } else {
