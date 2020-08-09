@@ -5,6 +5,7 @@
 # Include soruce code
 !*.c
 !*.cpp
+!*.py
 !baekjoon
 !programmers
 
