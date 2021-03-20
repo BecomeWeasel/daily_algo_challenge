@@ -29,6 +29,9 @@ def sol():
 
   is_set_reverse = False
 
+  last_pointer = len(numbers) - 1
+  first_pointer = 0
+
   for task in task_set:
     # R 명령어가 들어오면
     if task == 'R':
@@ -37,16 +40,22 @@ def sol():
 
     # D 명령어가 들어오면
     else:
-      if len(numbers) == 0:
+      # if len(numbers) == 0:
+      if last_pointer < first_pointer:
         print('error')
         return 0
 
       if is_set_reverse:
-        numbers.pop()
+        # numbers.pop()
+        last_pointer -= 1
       else:
-        numbers.popleft()
+        # numbers.popleft()
+        first_pointer += 1
 
   # print('[' + ','.join(map(str, numbers)) + ']')
+
+  numbers=list(numbers)[first_pointer:last_pointer+1]
+
   if is_set_reverse:
     print('[' + ','.join(map(str, list(numbers)[::-1])) + ']')
   else:
