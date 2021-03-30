@@ -6,49 +6,40 @@ dx = [0, 0, -1, 1]
 R, C = 12, 6
 
 
-# target_list는 y,x가 내림차순으로 정렬되어 있음
-def boom(target_list, grid):
+def gravity(grid):
 
-  # y,x가 터지면 y-1,x가 아래로 내려옴
-
-  while len(target_list) != 0:
-    y, x = target_list[0]
-
-    # 맨 꼭대기 층이면 위에서 내려오는게 아니라 0으로 바꿔야함
-    if y == 0:
-      grid[y][x] = 0
-
-    while y > 0 and grid[y][x] != 0:
-      grid[y][x] = grid[y - 1][x]
-      y -= 1
-
-    del target_list[0]
+  # 가로로 먼저 확인하면서
+  for x in range(C):
+    # 세로로 아래에서부터 올라가는데
+    for y in range(R - 1, -1, -1):
+      # 0이면 중력의 대상이 아님
+      if grid[y][x] == 0:
+        continue
+      # grid[y][x]아래에 있는 grid[11][x],grid[10][x]...grid[y-1][x]까지 찾아보는데
+      for k in range(R - 1, y, -1):
+        if grid[k][x] == 0:
+          grid[k][x], grid[y][x] = grid[y][x], 0
+        # grid[y][x]는 0이 아니니(윗 continue의 조건) grid[k][x]가 0이면
+        # 중간에 빈공간이 생기니까 중력으로 떨어트려줘야함
+        # 예를 들어서)
+        # (위 생략)
+        # R..... (y=8)
+        # ....GG
+        # ....GG
+        # R..... (y=11)
+        # 이럴땐 k가 10일때
+        # grid[10][0]와 grid[8][0]을 스왑해줌
+        # (결과)
+        # ......
+        # ....GG
+        # R...GG
+        # R..... (y=11)
 
   return
 
 
-def move_down(board):
-  i, j = 11, 5
-  while j >= 0:
-    cnt = 0
-    while i >= 0:
-      if board[i][j] == 0:
-        cnt += 1
-        i -= 1
-        continue
-      if not cnt:
-        i -= 1
-        continue
-      board[i + cnt][j] = board[i][j]
-      board[i][j] = 0
-      i += cnt
-      cnt = 0
-    j -= 1
-    i = 11
-
-
 def bfs(grid, check, q):
-  target_list = list()
+  target_list = deque()
 
   while len(q) != 0:
     y, x = q.popleft()
@@ -65,7 +56,7 @@ def bfs(grid, check, q):
         check[ny][nx] = True
         q.append((ny, nx))
 
-  return sorted(target_list, key=lambda x: (x[0], x[1]))
+  return deque(sorted(target_list, key=lambda x: (x[0], x[1])))
 
 
 def sol():
@@ -109,18 +100,11 @@ def sol():
             is_boom = True
             for y, x in target_list:
               grid[y][x] = 0
-            boom_list.append(target_list)
-
-    move_down(grid)
 
     if not is_boom:
       return chain
 
-    # if len(boom_list) == 0:
-    #   return chain
-
-    # for PUYO in boom_list:
-    #   boom(PUYO, grid)
+    gravity(grid)
 
     chain += 1
 
