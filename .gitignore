@@ -1,13 +1,10 @@
-# Ignore all
+# ignore ALL
 *
 
-
-# Include soruce code
-!*.c
-!*.cpp
-!*.py
-!baekjoon
-!programmers
-
-# test.cpp
+!.gitignore
+test.py
 test.cpp
+*.in
+*.out
+
+!baekjoon/*.py

@@ -52,7 +52,7 @@ def sol():
 
   for _ in range(N):
     board.append(list(map(int, stdin.readline().split())))
-
+  
   # 일단 현재 입력받은 위치를 청소한다
   clean_floor(y, x, clean)
 
@@ -85,6 +85,43 @@ def sol():
     else:
       direction=new_direction
 
+def dfs_sol():
+  y, x, direction = map(int, stdin.readline().split())
 
-print(sol())
+  for _ in range(N):
+    board.append(list(map(int, stdin.readline().split())))
+  
+  dfs(y,x,direction)
+
+  return clean_score
+
+
+def dfs(y,x,direction):
+  global board,clean
+  origin_dir=direction
+
+  if board[y][x]==0 and not clean[y][x]:
+    clean_floor(y,x,clean)
+  
+  for k in range(4):
+    new_direction=(direction+3)%4
+
+    ny,nx=y+dy[new_direction],x+dx[new_direction]
+
+    if board[ny][nx]==0 and not clean[ny][nx]:
+      dfs(ny,nx,new_direction)
+      return
+    
+    direction=new_direction
+    
+  ry,rx=y+rdy[origin_dir],x+rdx[origin_dir]
+
+  if board[ry][rx]==1:
+    return
+
+  dfs(ry,rx,origin_dir)
+
+
+# print(sol())
+print(dfs_sol())
 
