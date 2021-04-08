@@ -1,93 +1,99 @@
 from sys import stdin
-from sys import maxsize
+from itertools import combinations
 from collections import deque
 
 N = int(stdin.readline())
-connection = [[False] * (N + 1) for _ in range(N + 1)]
-people = [-1]
-people = people + list(map(int, stdin.readline().split()))
-MIN = maxsize
-
-for i in range(1, N + 1):
-  input_list = list(map(int, stdin.readline().split()))
-  for k in range(input_list[0]):
-    connection[i][input_list[k + 1]] = connection[input_list[k + 1]][i] = True
 
 
-def bfs(group):
-  q = deque()
-  local_check = [False for _ in range(N + 1)]
+def sol():
+  # 각 구역마다 인구수
+  people = list(map(int, stdin.readline().split()))
 
-  q.append((group[0]))
-  local_check[group[0]] = True
-  cnt, peoples = 1, 0
+  connection = [[False for _ in range(N)] for _ in range(N)]
 
-  while q:
-    target = q.popleft()
-    peoples += people[target]
+  for i in range(N):
+    temp = list(map(int, stdin.readline().split()))
 
-    for i in range(1, N + 1):
-      # i번 구역이 target번과 인접해있고
-      # i번이 group 내부에 선정되어 있고
-      # 아직 방문하지 않았다면
-      if connection[target][i] and i in group and not local_check[i]:
-        local_check[i] = True
-        cnt += 1
-        q.append((i))
+    # 구역들끼리 연결되어있는 정보를 기록
+    if not temp[0] == 0:
+      for connected_node in temp[1:]:
+        connection[i][connected_node-1] = connection[connected_node-1][i] = True
 
-  # bfs 안에서 탐색이 group 내부의 
-  # 구역 개수만큼 수행되지 않았다면
-  # 한 곳은 연결되어 있지 않았으므로
-  # 선거구를 잘못 선정한것
-  if cnt == len(group):
-    return peoples
-  else:
-    return 0
+  MIN_DIFF = 1e9
 
+  district_list = [i for i in range( N )]
 
-def dfs(count, target_count, start, c):
-  global MIN
-  if count == target_count:
-    # 1선거구와 2선거구로 나눠서 넣음
-    group1, group2 = list(), list()
-
-    for i in range(1, N + 1):
-      if c[i]:
-        group1.append(i)
-      else:
-        group2.append(i)
-
-    # 1선거구나 2선거구에 대해서
-    # bfs를 수행한 값이 하나라도 0이라면
-    # 선거구가 똑바로 연결되어 있지 않다는 것이므로
-    # 빠져나감
-    ans1 = bfs(group1)
-    if ans1 == 0:
-      return
-    ans2 = bfs(group2)
-    if ans2 == 0:
-      return
-
+  # 딱 절반까지만 하면 됨
+  for i in range(1, int(N / 2) + 1):
     
-    MIN = min(MIN, abs(ans1 - ans2))
-    return
+    # 조합을 이용함
+    for g1 in list(combinations(district_list, i)):
+      selected_district = [False for _ in range(N)]
+
+      # 1선거구에 선정됨을 표시
+      for district in g1:
+        selected_district[district] = True
+
+      # 1선거구 ,2선거구
+      election_one, election_two = deque(),deque()
+
+      for j, is_one in enumerate(selected_district):
+        if is_one:
+          election_one.append(j)
+        else:
+          election_two.append(j)
+
+      diff = bfs(election_one, election_two,people,connection)
+
+      MIN_DIFF = min(MIN_DIFF, diff) if diff != -1 else MIN_DIFF
+
+  return -1 if MIN_DIFF == 1e9 else MIN_DIFF
+
+
+def bfs(e1, e2,people,connection):
+  check = [False for _ in range(N)]
+  e1_count,e2_count=0,0
   
-  for i in range(start,N+1):
-    if c[i]:
-      continue
-    c[i]=True
-    dfs(count+1,target_count,i,c)
-    c[i]=False
+  
+  front=e1.popleft()
 
+  q=deque()
+  q.append(front)
+  check[front]=True
 
+  while len(q)!=0:
+    node=q.popleft()
+    e1_count+=people[node]
 
-def ans():
-  # 먼저 두 선거구로 나누기 위해 dfs를 사용해서
-  # 분리
-  for i in range(1, N):
-    c = [False for _ in range(N + 1)]
-    dfs(0,i,1,c)
+    for another_node,is_connected in enumerate(connection[node]):
+      # 이 구역에 연결되어있는 다른 구역에 아직 방문하지 않았고그 구역이
+      # 같은 선거구 내일때
+      if is_connected==True and another_node in e1 and not check[another_node]:
+        check[another_node]=True
+        q.append(another_node)
+  
+  front=e2.popleft()
 
-  return MIN==maxsize and -1 or MIN
+  q=deque()
+  q.append(front)
+  check[front]=True
 
-print(ans())
+  while len(q)!=0:
+    node=q.popleft()
+    e2_count+=people[node]
+
+    for another_node,is_connected in enumerate(connection[node]):
+      # 이 구역에 연결되어있는 다른 구역에 아직 방문하지 않았고그 구역이
+      # 같은 선거구 내일때
+      if is_connected==True and another_node in e2 and not check[another_node]:
+        check[another_node]=True
+        q.append(another_node)
+  
+  # 방문하지 않은 구역이 있다는건 
+  # 연결되지 않은 구역이 선거구내에 있다는것임
+  for boolean in check:
+    if not boolean:
+      return -1
+  return abs(e1_count-e2_count)
+
+print(sol())
