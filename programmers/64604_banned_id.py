@@ -23,12 +23,18 @@ def solution(user_id, banned_id):
 
     # combi : 밴 리스트의 예비 대상들
     for combi in product_list:
-        if len(set(combi)) == len(banned_id) and not "".join(
-                list(combi)) in answer:
-            answer.add("".join(list(sorted(combi))))
+        # 중복되지 않고
+        if len(combi) == len(set(combi)):
+            unique_value = sum(2**idx for idx in combi)
+            
+            if unique_value not in answer:
+                answer.add(unique_value)
+
+        # if len(set(combi)) == len(banned_id) and not "".join(
+        #         list(combi)) in answer:
+        #     answer.add("".join(list(sorted(combi))))
         # if len(combi) == len(set(combi)):
         # unique_value = 0
-
 
         # 아래 방법은 TLE 처음부터 비트마스크 고려
 
@@ -53,7 +59,8 @@ def solution(user_id, banned_id):
 def get_ban_candidate_list(user_id_set, banned_id):
     candidate = []
 
-    for user_id in user_id_set:
+    # 비트마스킹을 위해서 처음부터 idx를 이용
+    for idx, user_id in enumerate(user_id_set):
         # 길이가 다르다면 아예 같을수 없음
         if len(user_id) != len(banned_id):
             continue
@@ -66,8 +73,9 @@ def get_ban_candidate_list(user_id_set, banned_id):
             if char_banned != '*' and char_user != char_banned:
                 is_candidate = False
 
+        # idx를 넣어서 리턴
         if is_candidate:
-            candidate.append(user_id)
+            candidate.append(idx)
 
     return candidate
 
