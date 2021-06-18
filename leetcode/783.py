@@ -37,7 +37,7 @@ class Solution:
         모든 node를 traverse 하는건 같지만,
         현재 node의 val와 left subtree의 rightmost (node.val보다 작은 값중에서 가장 큰 값)
         현재 node의 val와 right subtree의 leftmost (node.val보다 큰 값중에서 가장 작은 값)
-        계속 비교 : O(n)
+        계속 비교 : O(n)*n time -> O(n^2)
     '''
 
     self.min_val = 100
