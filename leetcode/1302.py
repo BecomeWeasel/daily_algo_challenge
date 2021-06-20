@@ -32,3 +32,36 @@ class Solution:
             node.right, depth + 1, tree_depth)
 
     return dfs(root, 1, tree_depth)
+
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+from collections import defaultdict
+
+# 최대 높이를 구하지 않고 defaultdict 이용해서
+# depth에 해당하는 리프노드의 값들을 더해줌
+# time : O(n)
+# space : O(h)
+class Solution:
+    def deepestLeavesSum(self, root: TreeNode) -> int:
+        self.dic=defaultdict(int)
+        
+        def dfs(node,depth):
+            if not node:
+                return 0
+            
+            if not node.left and not node.right:
+                self.dic[depth]+=node.val
+            
+            else:
+                dfs(node.right,depth+1)
+                dfs(node.left,depth+1)
+        dfs(root,1)
+                
+        return self.dic[max(self.dic)]
+
+'''
