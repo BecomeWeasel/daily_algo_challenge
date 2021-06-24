@@ -5,23 +5,23 @@
 #         self.left = left
 #         self.right = right
 
-class Solution:
+class Solution: # O(n+m)
     def getAllElements(self, root1: TreeNode, root2: TreeNode) -> List[int]:
         values1,values2=[],[]
         
         
-        def traversal(root,values):
+        def traversal(root,values): # O(n)
             if not root:
                 return
             else:
                 traversal(root.left,values)
                 values.append(root.val)
                 traversal(root.right,values)
-        traversal(root1,values1)
-        traversal(root2,values2)
+        traversal(root1,values1) # n nodes
+        traversal(root2,values2) # m nodes
         
         
-        def merge(arr1,arr2):
+        def merge(arr1,arr2): # O(n+m)
             
             len1=len(arr1)
             len2=len(arr2)
