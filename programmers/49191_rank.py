@@ -1,13 +1,13 @@
 def solution(n, results): # T:O(n^2)
     class player:
-        def __init__(self, val, win=[], lose=[]):
+        def __init__(self, val, win=None, lose=None):
             self.val = val
             # win들에게 이김
-            self.win = win
+            self.win = win or []
             # lose들에게 졌음
-            self.lose = lose
+            self.lose = lose or []
 
-    players = {i: player(i, [], []) for i in range(1, n + 1)}
+    players = {i: player(i) for i in range(1, n + 1)}
 
     answer = 0
 
