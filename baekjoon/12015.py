@@ -19,7 +19,7 @@ def lis(arr):
             C[tmp_longest] = n
         else:
             # next_loc = search(1, tmp_longest, n, C)
-            next_loc=bisect_left(C,n,0,tmp_longest)
+            next_loc=bisect_left(C,n,1,tmp_longest)
             C[next_loc] = n
 
     return tmp_longest
