@@ -35,7 +35,8 @@ int ans() {
   for (int i = 1; i < N; i++) {
     for (int j = 1; j < M; j++) {
       if (map[i - 1][j - 1] == 1 && map[i - 1][j] == 1 && map[i][j - 1] == 1) {
-        dp[i][j] = min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1])) + 1;
+        dp[i][j] = min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1]));
+        if (map[i][j]==1) dp[i][j]+=1;
         answer = max(answer, dp[i][j]);
       }
     }
