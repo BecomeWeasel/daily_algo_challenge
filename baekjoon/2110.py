@@ -1,37 +1,37 @@
 from sys import stdin
 
-N, C = map(int, stdin.readline().split())
-
-
 def sol():
-    answer = 0
-    houses = []
+    N,C=map(int,stdin.readline().split())
+
+    houses=list()
+
     for _ in range(N):
         houses.append(int(stdin.readline()))
+    
+    min_dist,max_dist=1,max(houses)-min(houses)
 
     houses.sort()
 
-    left, right = 1, max(houses) - min(houses)
-
-    while left <= right:
-        max_distance = (left + right) // 2
-
+    answer=-float('inf')
+    while min_dist<=max_dist:
         prev=houses[0]
 
-        router_cnt = 1
+        count=1
+        mid=(min_dist+max_dist)//2
 
-        for idx in range(1, len(houses)):
-            if houses[idx] - prev >= max_distance:
-                router_cnt += 1
-                prev=houses[idx]
+        for i in range(1,N):
+            if houses[i]-prev>=mid:
+                count+=1
+                prev=houses[i]
 
-        if router_cnt >= C:
-            left = max_distance + 1
-            answer = max(answer, max_distance)
+
+        # print(mid,count)
+        if count>=C:
+            answer=max(answer,mid)
+            min_dist=mid+1
         else:
-            right = max_distance - 1
-
+            max_dist=mid-1
+    
     return answer
-
 
 print(sol())
