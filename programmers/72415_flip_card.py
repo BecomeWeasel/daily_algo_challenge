@@ -45,7 +45,7 @@ def solution(board, r, c):
 
         return ret
 
-    def switchTo0(s:str,num) -> int:
+    def switchTo0(s:str,num:str) -> int:
 
         return s.replace(num,'0')
 
@@ -103,6 +103,7 @@ def solution(board, r, c):
             if b[idxConverter(f_y, f_x)] == b[idxConverter(y, x)] and (f_y, f_x) != (y, x):
 
                 b = switchTo0(b,b[idxConverter(f_y, f_x)])
+        
 
                 # 여기서 끝낼수있음
 
@@ -112,13 +113,13 @@ def solution(board, r, c):
                 # print(b)
                 visit.add((b, (y, x), False, (-1, -1)))
                 q.append((b, y, x, False, -1, -1, count + 1))
-                continue
+                
             # 짝은 안맞으면
             else:
 
-                if (b, (y, x), isFlipped, (f_y, f_x)) in visit:
+                if (b, (y, x), False, (-1, -1)) in visit:
                     continue
-                visit.add((b, (y, x), isFlipped, (f_y, -1)))
+                visit.add((b, (y, x), False, (-1, -1)))
                 q.append((b, y, x, False, -1, -1, count + 1))
         # 아직 뒤집지 않은 상태
         # 이제 뒤집기
