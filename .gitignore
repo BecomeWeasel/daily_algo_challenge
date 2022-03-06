@@ -8,5 +8,6 @@
 
 *.in
 *.out
+*.class
 test*
 tempCodeRunnerFile*
