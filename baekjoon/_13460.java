@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class _13460 {
-    static class Point {
+    private static class Point {
         int y, x;
 
         public Point(int y, int x) {
