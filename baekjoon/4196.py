@@ -11,7 +11,7 @@ def sol():
 
     indegree = [0 for _ in range(100001)]
 
-    indegree[0] = float('inf')
+    indegree[0] = float("inf")
 
     edges = defaultdict(list)
 

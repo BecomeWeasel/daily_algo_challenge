@@ -4,7 +4,7 @@ C, N = map(int, stdin.readline().split())
 
 
 def sol():
-    dp = [float('inf') for _ in range(2000)]
+    dp = [float("inf") for _ in range(2000)]
 
     dp[0] = 0
 

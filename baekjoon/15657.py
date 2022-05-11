@@ -11,7 +11,7 @@ def sol():
     def dfs(k, idx, nums):
         nonlocal visit, numbers
         if k == M:
-            print(' '.join(map(str, list(nums))))
+            print(" ".join(map(str, list(nums))))
             return
 
         for i in range(idx, len(numbers)):

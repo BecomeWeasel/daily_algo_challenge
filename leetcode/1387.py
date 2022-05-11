@@ -4,7 +4,7 @@ from collections import defaultdict
 class Solution:
     def getKth(self, lo: int, hi: int, k: int) -> int:
 
-        dp = defaultdict(lambda: -float('inf'))
+        dp = defaultdict(lambda: -float("inf"))
         dp[1] = 0
 
         # 홀수같은 경우는 compute 함수를 통해서 직접 계산해줘야함
@@ -20,7 +20,7 @@ class Solution:
                 return compute(n // 2) + 1
 
             # iterative way
-            ''' 
+            """ 
             c = 0
             while n > 1:
                 if n % 2 == 0:
@@ -38,7 +38,7 @@ class Solution:
                         if dp[n] > 0:
                             return dp[n] + c
             return c
-            '''
+            """
 
         for n in range(2, 1001):
             dp[n] = compute(n)

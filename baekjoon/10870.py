@@ -8,11 +8,11 @@ def sol():
     dp = [-1 for _ in range(MAX_LEN + 1)]
     dp[0] = 0
     dp[1] = 1
-    '''
+    """
     # bottom-up
     for i in range(2,N+1):
         dp[i]=dp[i-1]+dp[i-2]
-    '''
+    """
 
     # top-down
 

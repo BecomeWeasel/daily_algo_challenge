@@ -9,7 +9,7 @@ from collections import defaultdict
 
 
 class Solution:  # O(V*E)
-    def cloneGraph(self, node: 'Node') -> 'Node':
+    def cloneGraph(self, node: "Node") -> "Node":
         if not node:
             return node
 
@@ -51,7 +51,7 @@ class Solution:  # O(V*E)
         return copied_nodes[node.val]
 
 
-'''
+"""
 # Definition for a Node.
 class Node:
     def __init__(self, val = 0, neighbors = None):
@@ -84,4 +84,4 @@ class Solution: # O(V+E)
             
         
         return new_nodes[node.val]
-'''
+"""

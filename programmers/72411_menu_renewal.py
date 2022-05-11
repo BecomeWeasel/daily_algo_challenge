@@ -15,7 +15,7 @@ def solution(orders, course):
 
             for combi in combinations(o, c):
                 combi_list = sorted(list(combi))
-                max_courses[c][''.join(combi_list)] += 1
+                max_courses[c]["".join(combi_list)] += 1
 
     for c in course:
 

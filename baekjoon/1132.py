@@ -5,7 +5,7 @@ N = int(stdin.readline())
 
 def ans():
 
-    count = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'F': 0, 'G': 0, 'H': 0, 'I': 0, 'J': 0}
+    count = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "F": 0, "G": 0, "H": 0, "I": 0, "J": 0}
     first = [0 for _ in range(10)]
 
     for _ in range(N):
@@ -15,8 +15,8 @@ def ans():
 
         for idx, c in enumerate(string):
             if idx == 0:
-                first[ord(c) - ord('A')] = 1
-            count[c] += 10**(l - idx - 1)
+                first[ord(c) - ord("A")] = 1
+            count[c] += 10 ** (l - idx - 1)
             # print(count[c])
 
     count = sorted([(k, v) for k, v in count.items()], key=lambda x: (x[1]), reverse=True)
@@ -25,8 +25,8 @@ def ans():
     # 0도 쓰긴 해야함
     # 대신에 count가 제일 작은 애가 뒤로가야됨
     if count[-1][1] != 0:
-        for i in range(9,-1,-1):
-            if first[ord(count[i][0]) - ord('A')] == 0:
+        for i in range(9, -1, -1):
+            if first[ord(count[i][0]) - ord("A")] == 0:
                 to_back = count[i]
                 count.remove(to_back)
                 count.append(to_back)

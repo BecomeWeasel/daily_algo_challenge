@@ -5,7 +5,7 @@ dy = [-1, 1, 0, 0]
 dx = [0, 0, -1, 1]
 
 R, C = map(int, stdin.readline().split())
-''' 
+""" 
 # 불과 지훈이 동시에 움직이는 방식
 def is_border(y, x):
     global R, C
@@ -79,11 +79,11 @@ def sol():
             ny, nx = new_move.pop()
             move.append((ny, nx))
         time += 1
-'''
+"""
 
 
 def sol():
-    fire_spread = [[float('inf') for _ in range(C)] for _ in range(R)]
+    fire_spread = [[float("inf") for _ in range(C)] for _ in range(R)]
     board = []
 
     for _ in range(R):
@@ -95,10 +95,10 @@ def sol():
 
     for i in range(R):
         for j in range(C):
-            if board[i][j] == 'F':
+            if board[i][j] == "F":
                 f_queue.append((i, j, 0))
                 fire_spread[i][j] = 0
-            elif board[i][j] == 'J':
+            elif board[i][j] == "J":
                 start_y, start_x = i, j
 
     # 처음부터 가장자리면 1초 뒤에 바로 탈출
@@ -117,7 +117,7 @@ def sol():
                     continue
 
                 # 불이 퍼질수 없거나 이미 계산이 되었다면
-                if board[ny][nx] == '#' or fire_spread[ny][nx] != float('inf'):
+                if board[ny][nx] == "#" or fire_spread[ny][nx] != float("inf"):
                     continue
 
                 fire_spread[ny][nx] = time + 1
@@ -148,7 +148,7 @@ def sol():
                 return dist[y][x] + 1
 
             # 벽이거나
-            if board[ny][nx] == '#':
+            if board[ny][nx] == "#":
                 continue
 
             # 이미 방문

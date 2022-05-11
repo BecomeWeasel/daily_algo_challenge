@@ -1,5 +1,6 @@
 from sys import stdin
 from collections import defaultdict
+
 N, M = map(int, stdin.readline().split())
 
 
@@ -14,7 +15,7 @@ def sol():
     def dfs(k, nums):
         nonlocal visit, numbers
         if k == M:
-            print(' '.join(map(str, list(nums))))
+            print(" ".join(map(str, list(nums))))
             return
 
         for num in numbers:

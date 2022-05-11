@@ -19,9 +19,11 @@ def sol():
             cnt += 1
 
         for i in range(1, N + 1):
-            if (i in vertical_check) or (
-                    i + k + 1 in right_top_to_left_bottom_check) or (
-                        k + 1 - i in left_top_to_right_bottom_check):
+            if (
+                (i in vertical_check)
+                or (i + k + 1 in right_top_to_left_bottom_check)
+                or (k + 1 - i in left_top_to_right_bottom_check)
+            ):
                 continue
             vertical_check.add(i)
             right_top_to_left_bottom_check.add(i + k + 1)

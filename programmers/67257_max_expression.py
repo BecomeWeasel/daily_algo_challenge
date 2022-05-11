@@ -5,19 +5,19 @@ import re
 
 def solution(expression):
     answer = 0
-    cumulative_num = ''
+    cumulative_num = ""
     s = []
     for char in expression:
-        if char not in ['*', '-', '+']:
+        if char not in ["*", "-", "+"]:
             cumulative_num += char
         else:
             s.append(int(cumulative_num))
             s.append(char)
-            cumulative_num = ''
+            cumulative_num = ""
     s.append(int(cumulative_num))
-    op = [x for x in expression if x in ['*', '-', '+']]
+    op = [x for x in expression if x in ["*", "-", "+"]]
     # Regexp 이용한 방법
-    ''' 
+    """ 
     nums=re.split('\*|\+|\-',expression)
     num_q=deque(nums)
     
@@ -30,7 +30,7 @@ def solution(expression):
         i+=1
         j+=1
     s.append(nums[-1])
-    '''
+    """
     op = list(set(op))
 
     for op_set in permutations(op, len(op)):
@@ -42,7 +42,7 @@ def solution(expression):
                 if c_s[i] == op_order:
                     first, second = c_s[i - 1], c_s[i + 1]
                     val = eval(str(first) + op_order + str(second))
-                    c_s = c_s[:i - 1] + [val] + c_s[i + 2:]
+                    c_s = c_s[: i - 1] + [val] + c_s[i + 2 :]
                     i -= 1
 
                 dynamic_len = len(c_s)

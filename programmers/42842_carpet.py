@@ -16,5 +16,5 @@ def solution(brown, yellow):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(solution(24, 24))

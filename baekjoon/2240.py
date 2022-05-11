@@ -38,6 +38,7 @@ def sol():
 
     return max(max(dp[T]))
 
+
 def sol2():
 
     T, W = map(int, stdin.readline().split())

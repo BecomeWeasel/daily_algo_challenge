@@ -30,19 +30,18 @@ def solution(begin, target, words):
 
     while len(q) != 0:
         origin, count, visit = q.popleft()
-        
-        if origin==target:
-            answer=count
+
+        if origin == target:
+            answer = count
             break
 
         for idx, word in enumerate(words):
             if is_convertible(origin, word) and not visit[idx]:
                 visit[idx] = True
                 q.append((word, count + 1, visit))
-        
 
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))

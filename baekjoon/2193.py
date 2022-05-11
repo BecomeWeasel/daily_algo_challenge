@@ -9,7 +9,7 @@ def sol():
     dp[1] = [0, 1]
     dp[2] = [1, 0]
 
-    for n in range(3, N+1):
+    for n in range(3, N + 1):
         dp[n][0] = dp[n - 1][0] + dp[n - 1][1]
         dp[n][1] = dp[n - 1][0]
 

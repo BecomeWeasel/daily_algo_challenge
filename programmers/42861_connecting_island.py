@@ -17,7 +17,7 @@ def union_parent(parent, a, b):
 def solution(n, costs):
     answer = 0
     parent = [0] * n
-    num_of_connected_island=0
+    num_of_connected_island = 0
 
     for i in range(n):
         parent[i] = i
@@ -29,13 +29,13 @@ def solution(n, costs):
     for cost in costs:
         # n개의 섬이 모두 한 집합안에 있다면
         # n개의 섬이 모두 연결된 것
-        if num_of_connected_island==n:
+        if num_of_connected_island == n:
             break
         # 섬끼리 같은 집합이 아니라면 union 해야함
         if find_parent(parent, cost[0]) != find_parent(parent, cost[1]):
             union_parent(parent, cost[0], cost[1])
             answer += cost[2]
-            num_of_connected_island+=1
+            num_of_connected_island += 1
         else:
             continue
 

@@ -18,7 +18,7 @@ def solution(places):
 
         for i in range(5):
             for j in range(5):
-                if board[i][j] == 'P':
+                if board[i][j] == "P":
                     people.append((i, j))
 
         safe_flag = True
@@ -40,8 +40,8 @@ def solution(places):
                     if not (0 <= ny < 5) or not (0 <= nx < 5):
                         continue
 
-                    if (ny, nx) not in visit and board[ny][nx] != 'X':
-                        if board[ny][nx] == 'P':
+                    if (ny, nx) not in visit and board[ny][nx] != "X":
+                        if board[ny][nx] == "P":
                             safe_flag = False
                         q.append((ny, nx, dist + 1))
                         visit.add((ny, nx))

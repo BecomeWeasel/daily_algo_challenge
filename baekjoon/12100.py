@@ -73,7 +73,7 @@ def sol():
             for y in range(N):
                 og_list = board[y][:]
                 tmp = [0 for _ in range(N)]
-                '''
+                """
                 [0,0,2,0,0,2,0,4]
                 를 대상으로 같은 크기만큼의 tmp 배열만듬
                 원래 리스트를 왼쪽으로 loop 돌면서
@@ -83,7 +83,7 @@ def sol():
                 현재 들어갈 자리에 다른 숫자만나면 다음 칸에 집어 넣음
                 
         
-                '''
+                """
                 idx = 0
                 for num in og_list:
                     if num == 0:

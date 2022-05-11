@@ -1,5 +1,5 @@
 def solution(s):
-    answer = float('inf')
+    answer = float("inf")
 
     length = len(s)
 
@@ -9,8 +9,8 @@ def solution(s):
         start = 0
         end = start + unit
 
-        ret = ''
-        prev = ''
+        ret = ""
+        prev = ""
         counter = 1
 
         while end <= length:

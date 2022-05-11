@@ -10,7 +10,7 @@ def sol():
 
     numbers = list(map(int, stdin.readline().split()))
 
-    C = [-float('inf') for _ in range(N + 1)]
+    C = [-float("inf") for _ in range(N + 1)]
 
     for num in numbers:
         if C[length] < num:

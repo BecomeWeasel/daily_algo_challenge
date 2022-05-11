@@ -7,7 +7,7 @@ def sol():
 
     A = list(map(int, stdin.readline().split()))
 
-    dp = [[-float('inf') for _ in range(2)] for _ in range(N)]
+    dp = [[-float("inf") for _ in range(2)] for _ in range(N)]
 
     dp[0][1] = A[0]
 

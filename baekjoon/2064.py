@@ -11,8 +11,8 @@ def sol():
 
     for _ in range(n):
         addr = stdin.readline().rstrip()
-        single_bin_ip_addr = ''
-        for word in addr.split('.'):
+        single_bin_ip_addr = ""
+        for word in addr.split("."):
             # IP 주소 Byte 단위 int를 binary로 변환하고
             # 8글자 패딩
             single_bin_ip_addr += bin(int(word))[2:].zfill(8)
@@ -38,18 +38,18 @@ def sol():
                 m = max(m, len(r) - 2)
 
     # 네트워크 주소 규칙에 맞게 주소와 마스크의 single_bin_ip_addr 생성
-    network_addr_bin = bin_ip_addrs[0][:len(bin_ip_addrs[0]) - m] + m * '0'
-    network_mask_bin = (32 - m) * '1' + m * '0'
+    network_addr_bin = bin_ip_addrs[0][: len(bin_ip_addrs[0]) - m] + m * "0"
+    network_mask_bin = (32 - m) * "1" + m * "0"
 
     network_addr, network_mask = [], []
 
     # binary를 Byte 단위로 int로 변환
     for i in range(0, 32, 8):
-        network_addr.append(int(network_addr_bin[i:i + 8], 2))
-        network_mask.append(int(network_mask_bin[i:i + 8], 2))
+        network_addr.append(int(network_addr_bin[i : i + 8], 2))
+        network_mask.append(int(network_mask_bin[i : i + 8], 2))
 
-    print('.'.join(map(str, network_addr)))
-    print('.'.join(map(str, network_mask)))
+    print(".".join(map(str, network_addr)))
+    print(".".join(map(str, network_mask)))
 
 
 sol()

@@ -8,7 +8,7 @@ def sol():
 
     src = int(stdin.readline())
 
-    distances = {node: float('inf') for node in range(1, V + 1)}
+    distances = {node: float("inf") for node in range(1, V + 1)}
 
     distances[src] = 0
 
@@ -37,7 +37,7 @@ def sol():
                 hq.heappush(q, (w, adjacent_node))
 
     for i in range(1, V + 1):
-        if distances[i] == float('inf'):
+        if distances[i] == float("inf"):
             print("INF")
         else:
             print(distances[i])

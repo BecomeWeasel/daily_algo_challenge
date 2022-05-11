@@ -8,7 +8,7 @@ def sol():
 
     s, e = 0, 0
 
-    answer = float('inf')
+    answer = float("inf")
 
     tot = numbers[s]
 
@@ -23,7 +23,7 @@ def sol():
             tot -= numbers[s]
             s += 1
 
-    return answer if answer != float('inf') else 0
+    return answer if answer != float("inf") else 0
 
 
 print(sol())

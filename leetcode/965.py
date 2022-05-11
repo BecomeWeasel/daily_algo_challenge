@@ -4,19 +4,15 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution: # T:O(n)
+class Solution:  # T:O(n)
     def isUnivalTree(self, root: TreeNode) -> bool:
-        
-        
-        def traversal(root,t):
+        def traversal(root, t):
             if not root:
                 return True
-            
-            
-            if root.val==t:
-                return traversal(root.left,t) and traversal(root.right,t)
+
+            if root.val == t:
+                return traversal(root.left, t) and traversal(root.right, t)
             else:
                 return False
-            
-        
-        return traversal(root,root.val)
+
+        return traversal(root, root.val)

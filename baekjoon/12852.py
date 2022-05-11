@@ -5,7 +5,7 @@ N = int(stdin.readline())
 
 def sol():
 
-    dp = [float('inf') for _ in range(int(1e6) + 1)]
+    dp = [float("inf") for _ in range(int(1e6) + 1)]
     pre = [0 for _ in range(int(1e6) + 1)]
 
     dp[0] = 0
@@ -34,7 +34,7 @@ def sol():
 
         result.append(curr)
 
-    print(' '.join(map(str, result)))
+    print(" ".join(map(str, result)))
 
 
 sol()

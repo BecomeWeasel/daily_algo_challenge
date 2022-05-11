@@ -8,7 +8,7 @@ def sol():
 
     numbers = list()
 
-    answer = float('inf')
+    answer = float("inf")
 
     for _ in range(N):
         numbers.append(int(stdin.readline()))
@@ -19,7 +19,7 @@ def sol():
         nonlocal M, answer
         l, r = idx - 1, N - 1
 
-        while (l + 1 < r):
+        while l + 1 < r:
             mid = (l + r) // 2
 
             if numbers[mid] - numbers[idx] >= M:
@@ -27,8 +27,7 @@ def sol():
             else:
                 l = mid
 
-        if numbers[r] - numbers[idx] < answer and numbers[r] - numbers[
-                idx] >= M:
+        if numbers[r] - numbers[idx] < answer and numbers[r] - numbers[idx] >= M:
             answer = numbers[r] - numbers[idx]
 
     for idx in range(N):
@@ -43,7 +42,7 @@ def two_pointer():
 
     numbers = list()
 
-    answer = float('inf')
+    answer = float("inf")
 
     for _ in range(N):
         numbers.append(int(stdin.readline()))

@@ -5,9 +5,13 @@ N = int(stdin.readline())
 
 def sol():
 
-    dp = [[float('inf'), float('inf'), float('inf'), float('inf')] for _ in range(1000 + 1)]
+    dp = [[float("inf"), float("inf"), float("inf"), float("inf")] for _ in range(1000 + 1)]
 
-    R, G, B = [0 for _ in range(1000 + 1)], [0 for _ in range(1000 + 1)], [0 for _ in range(1000 + 1)]
+    R, G, B = (
+        [0 for _ in range(1000 + 1)],
+        [0 for _ in range(1000 + 1)],
+        [0 for _ in range(1000 + 1)],
+    )
 
     for i in range(1, N + 1):
         r, g, b = map(int, stdin.readline().split())

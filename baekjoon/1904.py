@@ -10,7 +10,7 @@ def sol():
     dp[2] = 2
 
     for n in range(3, N + 1):
-        dp[n] = (dp[n - 1] + dp[n - 2])%15746
+        dp[n] = (dp[n - 1] + dp[n - 2]) % 15746
 
     return dp[N]
 

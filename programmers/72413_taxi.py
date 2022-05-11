@@ -14,7 +14,7 @@ def solution(n, s, a, b, fares):
     distances = defaultdict(dict)
 
     for i in range(1, n + 1):
-        distances[i] = {node: float('inf') for node in range(1, n + 1)}
+        distances[i] = {node: float("inf") for node in range(1, n + 1)}
         distances[i][i] = 0
 
     for i in range(1, n + 1):
@@ -35,10 +35,9 @@ def solution(n, s, a, b, fares):
                     distances[i][adjacent_node] = w
 
                     hq.heappush(q, (w, adjacent_node))
-    answer = float('inf')
+    answer = float("inf")
 
     for i in range(1, n + 1):
-        answer = min(answer,
-                     distances[s][i] + distances[i][a] + distances[i][b])
+        answer = min(answer, distances[s][i] + distances[i][a] + distances[i][b])
 
     return answer

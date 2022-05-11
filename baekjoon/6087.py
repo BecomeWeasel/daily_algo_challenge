@@ -22,7 +22,7 @@ def sol():
     e_y, e_x = None, None
     for i in range(H):
         for j in range(W):
-            if board[i][j] == 'C':
+            if board[i][j] == "C":
                 if p_y != None:
                     e_y, e_x = i, j
                 else:
@@ -30,7 +30,7 @@ def sol():
 
     q = deque()
     q.append((p_y, p_x, -1, 0))
-    visit = [[float('inf') for _ in range(W)] for _ in range(H)]
+    visit = [[float("inf") for _ in range(W)] for _ in range(H)]
     visit[p_y][p_x] = 0
 
     while q:
@@ -42,7 +42,7 @@ def sol():
             if OOB(ny, nx):
                 continue
 
-            if board[ny][nx] == '*':
+            if board[ny][nx] == "*":
                 continue
 
             # 방향 전환이 필요하고 더 적은 거울개수가 필요하면

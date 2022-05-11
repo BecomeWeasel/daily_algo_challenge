@@ -47,7 +47,6 @@ def sol():
     # 합계에서 빼버리면 되니까..
     # 결국 합계점수가 정해져있다는걸 고려하자
 
-
     # dp[a][b] 를 카드가 a~b 번째 카드까지 있을때 근우 A의 점수 최대라고 하면,
     # 근우는 매번 카드 뽑을때 dp 값이 최대인걸 원할거고 (L or R)
     # 명우는 저 값이 최소인걸 원할거임
@@ -62,26 +61,27 @@ def sol():
     # 명우 차례에선 L과 R을 더하면 안됨 , 왜냐면 그 경우는 이미 근우의 수일때 계산되었음
     # 명우 : min(dp[L+1][R],dp[L][R-1])
 
-
-    
-
-    def dp_helper(d,l,r,count,card):
+    def dp_helper(d, l, r, count, card):
         # 둘이 어긋나면 고를수 없는 상태임. 그니까 무조건 한쪽만 고를수밖에 없음
-        if l>r:
+        if l > r:
             return 0
-        
-        if d[l][r]!=-1:
+
+        if d[l][r] != -1:
             return d[l][r]
 
         # 이때는 근우 차례
-        if count%2==0:
-            d[l][r]=max(dp_helper(d,l+1,r,count+1,card)+card[l],dp_helper(d,l,r-1,count+1,card)+card[r])
+        if count % 2 == 0:
+            d[l][r] = max(
+                dp_helper(d, l + 1, r, count + 1, card) + card[l],
+                dp_helper(d, l, r - 1, count + 1, card) + card[r],
+            )
             return dp[l][r]
         # 이때는 명우 차례
         else:
-            d[l][r]=min(dp_helper(d,l+1,r,count+1,card),dp_helper(d,l,r-1,count+1,card))
+            d[l][r] = min(
+                dp_helper(d, l + 1, r, count + 1, card), dp_helper(d, l, r - 1, count + 1, card)
+            )
             return dp[l][r]
-
 
     answer = 0
 
@@ -89,12 +89,12 @@ def sol():
 
     cards = list(map(int, stdin.readline().split()))
 
+    dp = [[-1 for _ in range(len(cards))] for _ in range(len(cards))]
 
-    dp=[[-1 for _ in range(len(cards))] for _ in range(len(cards))]
+    dp_helper(dp, 0, N - 1, 0, cards)
 
-    dp_helper(dp,0,N-1,0,cards)
+    return dp[0][N - 1]
 
-    return dp[0][N-1]
 
 while T > 0:
     print(sol())

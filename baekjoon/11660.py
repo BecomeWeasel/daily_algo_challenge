@@ -17,19 +17,19 @@ def sol():
                 dp[i][0] = board[i][0]
             else:
                 dp[i][j] = board[i][j] + dp[i][j - 1]
-    result = ''
+    result = ""
     for _ in range(M):
         y1, x1, y2, x2 = map(int, stdin.readline().split())
-        x1,y1,x2,y2=map(lambda x:x-1,[x1,y1,x2,y2])
+        x1, y1, x2, y2 = map(lambda x: x - 1, [x1, y1, x2, y2])
 
         # print(x1,y1,x2,y2)
-        
-        total=0
-        for y in range(y1,y2+1):
-            if x1==0:
-                total+=dp[y][x2]
+
+        total = 0
+        for y in range(y1, y2 + 1):
+            if x1 == 0:
+                total += dp[y][x2]
             else:
-                total+=dp[y][x2]-dp[y][x1-1]
+                total += dp[y][x2] - dp[y][x1 - 1]
             # print(total)
         print(total)
 

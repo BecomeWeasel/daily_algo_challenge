@@ -20,12 +20,12 @@ def sol():
             victim = -1
             for candidate in multitap:
                 # print(candidate)
-                dist = float('inf')
-                for j, next_num in enumerate(order[i + 1:]):
+                dist = float("inf")
+                for j, next_num in enumerate(order[i + 1 :]):
                     if next_num == candidate:
                         dist = min(dist, j)
                         break
-                if dist == float('inf') or dist > max_distance:
+                if dist == float("inf") or dist > max_distance:
                     max_distance = dist
                     victim = candidate
 

@@ -22,7 +22,7 @@ def sol():
 
     for i in range(N):
         for j in range(M):
-            if board[i][j] == '0':
+            if board[i][j] == "0":
                 posy, posx = i, j
 
     q = deque()
@@ -43,26 +43,26 @@ def sol():
             if OOB(ny, nx):
                 continue
 
-            if (ny, nx, visit_bit) in visit or board[ny][nx] == '#':
+            if (ny, nx, visit_bit) in visit or board[ny][nx] == "#":
                 continue
 
-            if board[ny][nx] == '1':
+            if board[ny][nx] == "1":
                 return count + 1
-            elif board[ny][nx] in {'a', 'b', 'c', 'd', 'e', 'f'}:
+            elif board[ny][nx] in {"a", "b", "c", "d", "e", "f"}:
                 key_num = ord(board[ny][nx]) - 97
 
                 new_visit_bit = visit_bit | (1 << key_num)
 
                 visit.add((ny, nx, new_visit_bit))
                 q.append((ny, nx, count + 1, new_visit_bit))
-            elif board[ny][nx] in {'A', 'B', 'C', 'D', 'E', 'F'}:
+            elif board[ny][nx] in {"A", "B", "C", "D", "E", "F"}:
                 door_num = ord(board[ny][nx]) - 65
 
                 # 열쇠가 있음
                 if visit_bit & (1 << door_num) > 0:
                     visit.add((ny, nx, visit_bit))
                     q.append((ny, nx, count + 1, visit_bit))
-            elif board[ny][nx] == '.' or board[ny][nx] == '0':
+            elif board[ny][nx] == "." or board[ny][nx] == "0":
                 visit.add((ny, nx, visit_bit))
                 q.append((ny, nx, count + 1, visit_bit))
 

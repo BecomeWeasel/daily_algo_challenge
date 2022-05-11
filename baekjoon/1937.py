@@ -38,7 +38,7 @@ def dfs(y, x):
                 # 내 옆칸 생존일수보다 하루는 더 살수 있음
                 # 내 옆칸 생존일수에 대해서 재귀적으로 계산
                 dp[y][x] = max(dfs(ny, nx) + 1, dp[y][x])
-    
+
     # 이제는 (y,x)에 대해서 최장기간 사는날이 구해져있음.
     # 다음에 (y,x)에 대해서 탐색을 할 필요 없이 바로 값만 계산해서 보내줌
     return dp[y][x]
@@ -77,12 +77,12 @@ def sol():
 
     for i in range(N):
         for j in range(N):
-            dfs(i,j)
+            dfs(i, j)
 
     # map(func,iter)이 iter에 대해서 func 적용한 결과물들이니까
     # max(dp)=>[max(dp[0]),max(dp[1]),max(dp[2])...]
     # 여기에 대해서 다시 max를 하면 2차원 dp에서 최댓값
-    return max(map(max,dp))
+    return max(map(max, dp))
 
 
 print(sol())

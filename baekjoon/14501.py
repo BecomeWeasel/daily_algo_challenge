@@ -6,8 +6,8 @@ N = int(stdin.readline())
 def sol():
     dp = [0 for _ in range(15 + 1)]
 
-    T = [0 for _ in range(N+1)]
-    P = [0 for _ in range(N+1)]
+    T = [0 for _ in range(N + 1)]
+    P = [0 for _ in range(N + 1)]
 
     for i in range(N):
         t, p = map(int, stdin.readline().split())

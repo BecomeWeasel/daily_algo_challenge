@@ -18,7 +18,7 @@ def sol():
         nonlocal board
         if not (0 <= y < R) or not (0 <= x < C):
             return True
-        if board[y][x] == 'x':
+        if board[y][x] == "x":
             return True
         return False
 
@@ -44,12 +44,12 @@ def sol():
 
             if not visit[ny][nx] and not check[num]:
                 # board[ny][nx]='x'
-                visit[ny][nx]=True
+                visit[ny][nx] = True
                 dfs(ny, nx, num)
 
     for y in range(R):
         # visit.add((y, 0))
-        visit[y][0]=True
+        visit[y][0] = True
         dfs(y, 0, y)
 
     # print(check)

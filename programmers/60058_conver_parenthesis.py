@@ -6,7 +6,7 @@ def is_valid(s):
             stack.append(symbol)
             continue
 
-        if stack[-1] == '(' and symbol == ')':
+        if stack[-1] == "(" and symbol == ")":
             stack.pop()
             continue
 
@@ -25,8 +25,8 @@ def solution(p):
     def solve(p):
         # print("cehck")
 
-        if p == '':
-            return ''
+        if p == "":
+            return ""
 
         if is_valid(p):
             print("correct and return " + p)
@@ -34,32 +34,32 @@ def solution(p):
 
         l_c, r_c = 0, 0
 
-        u, v = '', ''
+        u, v = "", ""
 
         for idx, symbol in enumerate(p):
-            if symbol == '(':
+            if symbol == "(":
                 l_c += 1
             else:
                 r_c += 1
 
             if l_c == r_c:
-                u = p[:idx + 1]
-                v = p[idx + 1:]
+                u = p[: idx + 1]
+                v = p[idx + 1 :]
                 break
 
         if is_valid(u):
             return u + solve(v)
 
-        temp = '(' + solve(v) + ')'
+        temp = "(" + solve(v) + ")"
 
         u = u[1:-1]
         u = list(u)
         for idx, symbol in enumerate(u):
-            if symbol == '(':
-                u[idx] = ')'
+            if symbol == "(":
+                u[idx] = ")"
             else:
-                u[idx] = '('
-        temp += ''.join(map(str, u))
+                u[idx] = "("
+        temp += "".join(map(str, u))
         return temp
 
     answer = solve(p)

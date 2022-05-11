@@ -9,13 +9,13 @@ def sol():
     numbers_ = sorted(set(numbers))
 
     answer_dict = {v: i for i, v in enumerate(numbers_)}
-    
-    answer=list()
-    
+
+    answer = list()
+
     for number in numbers:
         answer.append(answer_dict[number])
-    
-    print(' '.join(map(str,answer)))
+
+    print(" ".join(map(str, answer)))
 
 
 sol()

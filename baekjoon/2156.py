@@ -19,4 +19,5 @@ def sol():
 
     return max(dp[N])
 
+
 print(sol())

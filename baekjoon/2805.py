@@ -9,7 +9,7 @@ def sol():
     left = 0
     right = max(trees)
 
-    answer = -float('inf')
+    answer = -float("inf")
 
     while left <= right:
         mid = (left + right) // 2

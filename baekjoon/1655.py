@@ -55,8 +55,7 @@ def sol():
         else:
             hq.heappush(max_heap, (-num, num))
 
-        if not len(max_heap) == 0 and not len(
-                min_heap) == 0 and max_heap[0][1] > min_heap[0][1]:
+        if not len(max_heap) == 0 and not len(min_heap) == 0 and max_heap[0][1] > min_heap[0][1]:
             max_heap_v, min_heap_v = hq.heappop(max_heap)[1], hq.heappop(min_heap)[1]
 
             hq.heappush(min_heap, (max_heap_v, max_heap_v))

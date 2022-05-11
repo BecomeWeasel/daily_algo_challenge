@@ -11,14 +11,14 @@ def sol():
     J = list(map(int, stdin.readline().split()))
 
     for n in range(N):
-        for h in range(1,100 + 1):
+        for h in range(1, 100 + 1):
             if h - L[n] > 0:
                 dp[n][h] = max(dp[n - 1][h], dp[n - 1][h - L[n]] + J[n])
             else:
-                if n==0:
-                    dp[0][h]=0
+                if n == 0:
+                    dp[0][h] = 0
                 else:
-                    dp[n][h]=dp[n-1][h]
+                    dp[n][h] = dp[n - 1][h]
 
     return max(dp[n])
 

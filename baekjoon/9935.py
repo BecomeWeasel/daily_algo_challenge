@@ -15,7 +15,7 @@ def sol():
         if char == last and stack[-target_len:] == target:
             del stack[-target_len:]
 
-    print(''.join(stack) if len(stack) != 0 else "FRULA")
+    print("".join(stack) if len(stack) != 0 else "FRULA")
 
 
 sol()

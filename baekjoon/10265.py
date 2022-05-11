@@ -83,7 +83,7 @@ def sol():
 
     # '''
 
-    dp=[[0 for _ in range(1001)] for _ in range(1001)]
+    dp = [[0 for _ in range(1001)] for _ in range(1001)]
     for i in range(len(SCC_min_max)):
         # minSCC : SCC의 크기
         # maxSCC : SCC에 달려있는 것들 (최대크기)
@@ -93,15 +93,15 @@ def sol():
             continue
 
         for j in range(k, -1, -1):
-            dp[i][j]=dp[i-1][j]
+            dp[i][j] = dp[i - 1][j]
             for w in range(minSCC, maxSCC + 1):
                 if j - w >= 0:
                     dp[i][j] = max(dp[i][j], dp[i - 1][j - w] + w)
-    
+
     return dp[len(SCC_min_max) - 1][k]
 
     # '''
-    '''
+    """
     dp = [False for _ in range(1001)]
 
     dp[0] = True
@@ -116,7 +116,7 @@ def sol():
         if dp[i]:
             return i
 
-    '''
+    """
 
 
 print(sol())

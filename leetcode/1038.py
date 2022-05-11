@@ -24,14 +24,14 @@ class Solution:
             if not node:
                 return
             else:
-                node.val = sum(self.values[self.values.index(node.val):])
+                node.val = sum(self.values[self.values.index(node.val) :])
                 add_dfs(node.left)
                 add_dfs(node.right)
 
         add_dfs(root)
 
         return root
-        '''
+        """
         Reverse In-order traversal을 이용한 풀이
         self.total=0
         def dfs(node):
@@ -44,4 +44,4 @@ class Solution:
         dfs(root)
         
         return root
-        '''
+        """

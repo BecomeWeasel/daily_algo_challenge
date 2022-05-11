@@ -11,7 +11,7 @@ def sol():
     def dfs(k, nums):
         nonlocal numbers
         if k == M:
-            print(' '.join(map(str, list(nums))))
+            print(" ".join(map(str, list(nums))))
             return
 
         for num in numbers:

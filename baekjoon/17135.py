@@ -35,12 +35,13 @@ def sol():
         for a in combi:
             archer_line[a] = 9
         cp_board.append(archer_line)
-        '''
+        """
         print()
         print()
         for r in cp_board:
             print(r)
-        '''
+        """
+
         def bfs(q: deque, visit: set):
             nonlocal cp_board, N, M, D
             target = []

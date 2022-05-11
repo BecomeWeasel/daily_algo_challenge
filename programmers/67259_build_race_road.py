@@ -12,7 +12,7 @@ def solution(board):
     q = deque()
 
     # visit[y][x]는 (x,y) 방문시 최소 비용
-    visit = [[float('inf') for _ in range(n)] for _ in range(n)]
+    visit = [[float("inf") for _ in range(n)] for _ in range(n)]
 
     # 시작시에는 이전방향을 -1을 줌. 공평하게 무조건 코너를 추가하는 방식
     # 대신에 총 합게에서 500을 차감

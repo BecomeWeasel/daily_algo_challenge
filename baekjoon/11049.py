@@ -73,8 +73,10 @@ def sol():
             for k in range(i, j):
                 d[i][j] = min(
                     d[i][j],
-                    calc(i, k, d) + calc(k + 1, j, d) +
-                    matrix[i][0] * matrix[k + 1][0] * matrix[j][1])
+                    calc(i, k, d)
+                    + calc(k + 1, j, d)
+                    + matrix[i][0] * matrix[k + 1][0] * matrix[j][1],
+                )
             return d[i][j]
 
     calc(0, N - 1, dp)

@@ -21,7 +21,7 @@ def sol():
 
     r1, r2 = 0, 0
 
-    distances = {node: float('inf') for node in range(1, N + 1)}
+    distances = {node: float("inf") for node in range(1, N + 1)}
 
     distances[1] = 0
 
@@ -44,7 +44,7 @@ def sol():
     r1 += distances[v1]
     r2 += distances[v2]
 
-    distances = {node: float('inf') for node in range(1, N + 1)}
+    distances = {node: float("inf") for node in range(1, N + 1)}
 
     distances[v1] = 0
 
@@ -67,7 +67,7 @@ def sol():
     r1 += distances[v2]
     r2 += distances[N]
 
-    distances = {node: float('inf') for node in range(1, N + 1)}
+    distances = {node: float("inf") for node in range(1, N + 1)}
 
     distances[v2] = 0
 
@@ -90,7 +90,7 @@ def sol():
     r1 += distances[N]
     r2 += distances[v1]
 
-    return min(r1, r2) if r1 != float('inf') and r2 != float('inf') else -1
+    return min(r1, r2) if r1 != float("inf") and r2 != float("inf") else -1
 
 
 print(sol())

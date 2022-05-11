@@ -8,14 +8,14 @@ class Node:
 
 from collections import deque
 
+
 class Solution:
-  def maxDepth(self, root: 'Node') -> int:
-    if not root:
-      return 0
+    def maxDepth(self, root: "Node") -> int:
+        if not root:
+            return 0
 
+        if root.children:
+            return max(self.maxDepth(child) for child in root.children) + 1
 
-    if root.children:
-      return max(self.maxDepth(child) for child in root.children)+1
-    
-    else:
-        return 1
+        else:
+            return 1

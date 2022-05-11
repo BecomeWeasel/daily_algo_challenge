@@ -29,4 +29,5 @@ def sol():
             right = mid - 1
     return answer
 
+
 print(sol())

@@ -4,6 +4,7 @@ import heapq
 
 N, M = map(int, stdin.readline().split())
 
+
 class p:
     def __init__(self, val) -> None:
         self.val = val
@@ -18,13 +19,11 @@ class p:
             return False
 
     def __str__(self) -> str:
-        return 'val : ' + str(self.val) + ' ind : ' + str(self.indegree)
-
+        return "val : " + str(self.val) + " ind : " + str(self.indegree)
 
 
 def sol():
     global p
-
 
     adjacency_list = defaultdict(list)
     problems_set = defaultdict()
@@ -32,7 +31,7 @@ def sol():
     # problems[0]=(float('inf'),0)
 
     for i in range(N):
-        problems_set[i + 1] = p(i+1)
+        problems_set[i + 1] = p(i + 1)
 
     for _ in range(M):
         src, dest = map(int, stdin.readline().split())
@@ -40,12 +39,11 @@ def sol():
         problems_set[dest].indegree += 1
     problems = [problems_set[i + 1] for i in range(N)]
 
-    hq=[]
+    hq = []
 
     for p in problems:
-        if p.indegree==0:
+        if p.indegree == 0:
             hq.append(p)
-    
 
     heapq.heapify(hq)
     result = []
@@ -54,11 +52,11 @@ def sol():
 
         for adj in adjacency_list[p.val]:
             adj.indegree -= 1
-            if adj.indegree==0:
-                heapq.heappush(hq,adj)
+            if adj.indegree == 0:
+                heapq.heappush(hq, adj)
         result.append(p.val)
-        
-    return ' '.join(map(str, result))
+
+    return " ".join(map(str, result))
 
 
 print(sol())

@@ -46,7 +46,8 @@ def partial_sum(node, start, end, left, right):
 
     mid = (start + end) // 2
     return partial_sum(node * 2, start, mid, left, right) + partial_sum(
-        node * 2 + 1, mid + 1, end, left, right)
+        node * 2 + 1, mid + 1, end, left, right
+    )
 
 
 def sol():
@@ -68,7 +69,7 @@ def sol():
 
         print(partial_sum(1, 0, N - 1, x - 1, y - 1))
         update(1, 0, N - 1, a - 1, b - arr[a - 1])
-        arr[a-1]=b
+        arr[a - 1] = b
 
 
 sol()

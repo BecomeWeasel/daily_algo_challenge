@@ -1,10 +1,9 @@
-from sys import stdin, stdout,setrecursionlimit
+from sys import stdin, stdout, setrecursionlimit
 from collections import deque
 
 
 setrecursionlimit(10**5)
 T = int(stdin.readline())
-
 
 
 def sol():
@@ -19,11 +18,10 @@ def sol():
         ori, dest = map(int, stdin.readline().split())
 
         connection[ori][dest] = True
-        
 
     W = int(stdin.readline())
 
-    return dp(cost,connection,time,W,N)
+    return dp(cost, connection, time, W, N)
 
 
 def dp(cost, connection, time, target, N):
@@ -42,8 +40,7 @@ def dp(cost, connection, time, target, N):
 
     req_time = [dp(cost, connection, time, x, N) for x in req]
 
-    time[target] = cost[target - 1] + max(req_time) if len(
-        req_time) != 0 else cost[target - 1]
+    time[target] = cost[target - 1] + max(req_time) if len(req_time) != 0 else cost[target - 1]
 
     return time[target]
 

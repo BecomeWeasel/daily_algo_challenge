@@ -3,39 +3,39 @@ from collections import deque
 
 
 def ans():
-  if (A + B + C) % 3 != 0:
-    return 0
-  return bfs()
+    if (A + B + C) % 3 != 0:
+        return 0
+    return bfs()
 
 
 def bfs():
-  q = deque()
-  q.append((A, B, C))
-  while q:
-    a, b, c = q.popleft()
+    q = deque()
+    q.append((A, B, C))
+    while q:
+        a, b, c = q.popleft()
 
-    if a == b and a == c:
-      return 1
+        if a == b and a == c:
+            return 1
 
-    # a와 b 고르기
-    if a != b:
-      if a > b and not visited[a - b][b + b]:
-        q.append((a - b, b + b, c))
-        visited[a - b][b + b] = True
-      elif a < b and not visited[a + a][b - a]:
-        q.append((a + a, b - a, c))
-        visited[a + a][b - a] = True
+        # a와 b 고르기
+        if a != b:
+            if a > b and not visited[a - b][b + b]:
+                q.append((a - b, b + b, c))
+                visited[a - b][b + b] = True
+            elif a < b and not visited[a + a][b - a]:
+                q.append((a + a, b - a, c))
+                visited[a + a][b - a] = True
 
-    # b와 c 고르기
-    if b != c:
-      if b > c and not visited[a][b - c]:
-        q.append((a, b - c, c + c))
-        visited[a][b - c] = True
-      elif b < c and not visited[a][b + b]:
-        q.append((a, b + b, c - b))
-        visited[a][b + b] = True
+        # b와 c 고르기
+        if b != c:
+            if b > c and not visited[a][b - c]:
+                q.append((a, b - c, c + c))
+                visited[a][b - c] = True
+            elif b < c and not visited[a][b + b]:
+                q.append((a, b + b, c - b))
+                visited[a][b + b] = True
 
-  return 0
+    return 0
 
 
 A, B, C = map(int, stdin.readline().split())

@@ -66,31 +66,31 @@ def solution(stones, k):
     while left <= right:
         mid = (left + right) // 2
 
-        can_pass=True
+        can_pass = True
 
-        consequtive_zero=0
+        consequtive_zero = 0
         for stone in stones:
             # stone이 mid보다 작으면 mid명이 건널수 없음
             # 0이 생기면 consequtive_zero의 값을 올림
-            if stone<mid:
-                consequtive_zero+=1
+            if stone < mid:
+                consequtive_zero += 1
                 # 0이 연속해서 k개 생기면 건널수 없음
-                if consequtive_zero==k: 
-                    can_pass=False
+                if consequtive_zero == k:
+                    can_pass = False
                     break
             else:
-                consequtive_zero=0
-        
+                consequtive_zero = 0
+
         # 만약 충분히 건널수 있다면
         if can_pass:
             # answer을 더 큰값으로 교체
-            answer=max(mid,answer)
+            answer = max(mid, answer)
             # 탐색을 오른쪽으로 옮김 -> 더 많은 니니즈들이 건널수 있도록 시도
-            left=mid+1
+            left = mid + 1
         # 건널수 없다면
         else:
             # 탐색을 왼쪽으로 옮김 -> 적은 수의 니니즈들이 건널수 있도록 시도
-            right=mid-1
+            right = mid - 1
     return answer
 
 
@@ -116,5 +116,5 @@ def dfs(stones, k, max_len):
     return False
 
 
-if __name__ == '__main__':
-    print(solution([2, 4, 5, 3, 2, 1, 4, 2, 5, 1]	, 3))
+if __name__ == "__main__":
+    print(solution([2, 4, 5, 3, 2, 1, 4, 2, 5, 1], 3))

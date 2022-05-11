@@ -9,12 +9,12 @@ def sol():
     fibo = [-1 for _ in range(80 + 1)]
     fibo[0] = 0
     fibo[1] = 1
-    ''' 
+    """ 
     # bottom-up
     for i in range(2, N + 1):
         fibo[i] = fibo[i - 1] + fibo[i - 2]
         rectangle_round[i] = rectangle_round[i - 1] + fibo[i] * 2
-    '''
+    """
 
     # top-down
     def getFibo(N):

@@ -9,19 +9,19 @@ dx = [0, 0, -1, 1]
 def sol():
     N, M = map(int, stdin.readline().split())
 
-    board = [['A' for _ in range(M)] for _ in range(N)]
+    board = [["A" for _ in range(M)] for _ in range(N)]
 
     for i in range(N):
         s = stdin.readline()
 
         for j in range(M):
-            if s[j] == 'U':
+            if s[j] == "U":
                 board[i][j] = 0
-            elif s[j] == 'D':
+            elif s[j] == "D":
                 board[i][j] = 1
-            elif s[j] == 'L':
+            elif s[j] == "L":
                 board[i][j] = 2
-            elif s[j] == 'R':
+            elif s[j] == "R":
                 board[i][j] = 3
 
     count = 0

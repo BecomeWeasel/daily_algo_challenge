@@ -20,21 +20,21 @@ def sol():
                 pos_y, pos_x = i, j
 
     def serialize(board):
-        ret=''
-        for num in sum(board,[]):
-            ret+=str(num)
+        ret = ""
+        for num in sum(board, []):
+            ret += str(num)
         return int(ret)
 
     def deserialize(s):
-        s=str(s)
+        s = str(s)
 
         tmp = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
         # 시작이 0으로 시작하면 직렬화된 배열이 8자리
-        if len(s)==8:
-            s='0'+s
-        for idx,num in enumerate(s):
-            i=idx
+        if len(s) == 8:
+            s = "0" + s
+        for idx, num in enumerate(s):
+            i = idx
             y = i // 3
             x = i % 3
 

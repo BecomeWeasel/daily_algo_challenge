@@ -7,7 +7,7 @@ dx = [0, 0, -1, 1]
 def solution(board, r, c):
     def isEnd(s) -> bool:
         for c in s:
-            if c != '0':
+            if c != "0":
                 return False
         return True
 
@@ -38,16 +38,16 @@ def solution(board, r, c):
     # 구하는 것 : 최소 회수 이동
 
     def serialize(board) -> str:
-        ret = ''
+        ret = ""
         for r in board:
             for num in r:
                 ret += str(num)
 
         return ret
 
-    def switchTo0(s:str,num:str) -> int:
+    def switchTo0(s: str, num: str) -> int:
 
-        return s.replace(num,'0')
+        return s.replace(num, "0")
 
     def idxConverter(y, x) -> int:
         return 4 * y + x
@@ -73,7 +73,7 @@ def solution(board, r, c):
             if OOB(ny, nx):
                 continue
 
-            while b[idxConverter(ny, nx)] == '0' and not isOnEdgeByDirection(ny, nx, k):
+            while b[idxConverter(ny, nx)] == "0" and not isOnEdgeByDirection(ny, nx, k):
                 ny, nx = ny + dy[k], nx + dx[k]
 
             if (b, (ny, nx), isFlipped, (f_y, f_x)) in visit:
@@ -102,8 +102,7 @@ def solution(board, r, c):
             # 0으로 뒤집고
             if b[idxConverter(f_y, f_x)] == b[idxConverter(y, x)] and (f_y, f_x) != (y, x):
 
-                b = switchTo0(b,b[idxConverter(f_y, f_x)])
-        
+                b = switchTo0(b, b[idxConverter(f_y, f_x)])
 
                 # 여기서 끝낼수있음
 
@@ -113,7 +112,7 @@ def solution(board, r, c):
                 # print(b)
                 visit.add((b, (y, x), False, (-1, -1)))
                 q.append((b, y, x, False, -1, -1, count + 1))
-                
+
             # 짝은 안맞으면
             else:
 

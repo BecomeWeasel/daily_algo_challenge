@@ -12,11 +12,12 @@ def dfs(node, current_cost, current_top, visited, edges):
         return
 
     for adj, cost in edges[node]:
-        if visited[adj]: continue
+        if visited[adj]:
+            continue
 
         if cost + current_cost <= C:
             visited[adj] = True
-            dfs(adj, cost + current_cost, max(current_top,cost), visited, edges)
+            dfs(adj, cost + current_cost, max(current_top, cost), visited, edges)
             visited[adj] = False
 
 

@@ -4,18 +4,18 @@ N = int(stdin.readline())
 
 
 def ans():
-  result = 0
+    result = 0
 
-  digit = len(str(N))
+    digit = len(str(N))
 
-  accumulate_length = 0
+    accumulate_length = 0
 
-  for i in range(1, digit):
-    accumulate_length += i * 9 * 10**(i - 1)
+    for i in range(1, digit):
+        accumulate_length += i * 9 * 10 ** (i - 1)
 
-  result = accumulate_length + (N - (10**(digit - 1) - 1)) * digit
+    result = accumulate_length + (N - (10 ** (digit - 1) - 1)) * digit
 
-  return result
+    return result
 
 
 print(ans())

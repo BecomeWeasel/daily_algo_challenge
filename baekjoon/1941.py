@@ -81,23 +81,26 @@ def is_possible(selected_s, selected_y):
         for k in range(4):
             ny, nx = y + dy[k], x + dx[k]
 
-            if not (0 <= ny < 5 and 0 <= nx < 5): continue
+            if not (0 <= ny < 5 and 0 <= nx < 5):
+                continue
 
-            if (ny, nx) in visit: continue
+            if (ny, nx) in visit:
+                continue
 
-            if (ny, nx) not in target: continue
+            if (ny, nx) not in target:
+                continue
 
             q.append((ny, nx))
-            visit.add((ny,nx))
+            visit.add((ny, nx))
             visit_count += 1
-    
-    if visit_count==7:
+
+    if visit_count == 7:
         return True
     return False
 
 
 def sol():
-    global board, visited,answer
+    global board, visited, answer
 
     for _ in range(5):
         board.append(list(stdin.readline().rstrip()))
@@ -120,7 +123,7 @@ def sol():
 
     for i in range(5):
         for j in range(5):
-            if board[i][j] == 'S':
+            if board[i][j] == "S":
                 s_list.append((i, j))
             else:
                 y_list.append((i, j))

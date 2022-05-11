@@ -21,7 +21,7 @@ def solution(k, room_number):
                 number = next_room.get(number, FREE)
 
                 # 새로 안내받은 방이 FREE라면 그방으로 가면됨
-                if number==FREE:
+                if number == FREE:
                     answer.append(candidate_room)
                     # 다음에 candidate_room으로 접근을한다면
                     # candidate_room+1 방으로 가라고 알려줌
@@ -44,5 +44,5 @@ def solution(k, room_number):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(solution(10, [1, 3, 4, 1, 3, 1]))

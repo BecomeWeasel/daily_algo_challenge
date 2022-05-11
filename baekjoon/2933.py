@@ -10,7 +10,7 @@ dx = [0, 0, -1, 1]
 def sol():
     def print_board(board):
         for r in board:
-            print(''.join(r))
+            print("".join(r))
 
     board = [list(stdin.readline().rstrip()) for _ in range(R)]
 
@@ -21,14 +21,14 @@ def sol():
         # 왼쪽에서 던질때
         if idx % 2 == 0:
             for x in range(C):
-                if board[R - cmd][x] == 'x':
-                    board[R - cmd][x] = '.'
+                if board[R - cmd][x] == "x":
+                    board[R - cmd][x] = "."
                     break
         # 오른쪽에서 던질때
         else:
             for x in range(C - 1, -1, -1):
-                if board[R - cmd][x] == 'x':
-                    board[R - cmd][x] = '.'
+                if board[R - cmd][x] == "x":
+                    board[R - cmd][x] = "."
                     break
 
         visit = [[False for _ in range(C)] for _ in range(R)]
@@ -36,10 +36,10 @@ def sol():
         def bfs(q: deque, visit) -> list:
             nonlocal board
             minerals = []
-            lowest_y=-1
+            lowest_y = -1
             while q:
                 y, x = q.popleft()
-                lowest_y=max(lowest_y,y)
+                lowest_y = max(lowest_y, y)
                 minerals.append((y, x))
 
                 for k in range(4):
@@ -48,12 +48,12 @@ def sol():
                     if not (0 <= ny < R) or not (0 <= nx < C):
                         continue
 
-                    if board[ny][nx] == 'x' and not visit[ny][nx]:
+                    if board[ny][nx] == "x" and not visit[ny][nx]:
                         visit[ny][nx] = True
                         q.append((ny, nx))
 
             # 가장 낮은 미네랄이 바닥에 닿아있으면 생략해도됨
-            if lowest_y==R-1:
+            if lowest_y == R - 1:
                 return []
             # 떠있으면 drop 대상이 됨
             else:
@@ -64,13 +64,13 @@ def sol():
         # 떨어질 클러스터 체크
         # 클러스터에서 가장 낮은 y좌표가 R-1이 아니라면 떠있다고 간주 -> heapq 사용가능
 
-        keep_search=True
+        keep_search = True
 
         for i in range(R):
             if not keep_search:
                 break
             for j in range(C):
-                if board[i][j] == 'x' and not visit[i][j]:
+                if board[i][j] == "x" and not visit[i][j]:
                     visit[i][j] = True
                     q = deque()
                     q.append((i, j))
@@ -78,13 +78,13 @@ def sol():
                     mineral = sorted(bfs(q, visit), key=lambda pos: (-pos[0], pos[1]))
 
                     # 땅바닥에 닿아있는 클러스터면 검사할 필요 없음
-                    if len(mineral)==0:
+                    if len(mineral) == 0:
                         continue
-                        
+
                     # 땅바닥에 닿아있는 클러스터 하나를 찾으면
                     # 다음 클러스터는 검색할 필요가 없음
                     # 어차피 하나의 클러스터만 떨어지니
-                    keep_search=False
+                    keep_search = False
 
                     lowest_pos = mineral[0][0]
 
@@ -112,7 +112,7 @@ def sol():
 
             max_y = R
             for y in range(R - 1, dropped_mineral_lowest_y, -1):
-                if board[y][mineral_x] == 'x':
+                if board[y][mineral_x] == "x":
                     max_y = min(max_y, y)
 
             min_drop = min(max_y - dropped_mineral_lowest_y - 1, min_drop)
@@ -120,8 +120,8 @@ def sol():
         # 이제 클러스터를 min_drop 만큼 아래로 내려야함
         for pos in dropped_cluster:
             y, x = pos
-            board[y][x] = '.'
-            board[y + min_drop][x] = 'x'
+            board[y][x] = "."
+            board[y + min_drop][x] = "x"
 
     print_board(board)
 

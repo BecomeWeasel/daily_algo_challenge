@@ -4,25 +4,22 @@ from sys import stdin
 
 def sol():
     N = int(stdin.readline())
-    
-    numbers=[]
+
+    numbers = []
 
     for _ in range(N):
-        a,b=map(int,stdin.readline().split())
-        numbers.append((a,b))
+        a, b = map(int, stdin.readline().split())
+        numbers.append((a, b))
 
     numbers.sort(key=lambda x: x[0])
 
     # print(numbers)
 
-    numbers=[x[1] for x in numbers]
-
-    
+    numbers = [x[1] for x in numbers]
 
     length = 0
 
-    
-    C = [-float('inf') for _ in range(N+1)]
+    C = [-float("inf") for _ in range(N + 1)]
 
     for num in numbers:
         if C[length] < num:
@@ -32,7 +29,7 @@ def sol():
             pos = bisect_left(C, num, 0, length)
             C[pos] = num
     # print(C)
-    return N-length
+    return N - length
 
 
 print(sol())

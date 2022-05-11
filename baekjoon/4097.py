@@ -7,7 +7,7 @@ def sol(N):
     for _ in range(N):
         numbers.append(int(stdin.readline()))
 
-    dp = [-float('inf') for _ in range(N)]
+    dp = [-float("inf") for _ in range(N)]
 
     dp[0] = numbers[0]
 

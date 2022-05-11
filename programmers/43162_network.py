@@ -27,5 +27,5 @@ def solution(n, computers):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]))

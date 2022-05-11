@@ -2,37 +2,34 @@ from sys import stdin
 
 
 while True:
-    s=stdin.readline().rstrip()
+    s = stdin.readline().rstrip()
 
-    if s=='.':
-        break 
-    
-    
+    if s == ".":
+        break
 
-    def valid(s,stack):
+    def valid(s, stack):
         for char in s:
-            if char not in ['[',']','(',')']:
+            if char not in ["[", "]", "(", ")"]:
                 continue
-            elif char == ']' :
-                if len(stack)==0:
+            elif char == "]":
+                if len(stack) == 0:
                     return "no"
-                if stack[-1]=='[':
+                if stack[-1] == "[":
                     stack.pop()
                 else:
                     return "no"
-            elif char == ')':
-                if len(stack)==0:
+            elif char == ")":
+                if len(stack) == 0:
                     return "no"
-                if stack[-1]=='(':
+                if stack[-1] == "(":
                     stack.pop()
                 else:
                     return "no"
             else:
                 stack.append(char)
-        if len(stack)!=0:
+        if len(stack) != 0:
             return "no"
         else:
             return "yes"
-    print(valid(s,list()))
 
-    
+    print(valid(s, list()))

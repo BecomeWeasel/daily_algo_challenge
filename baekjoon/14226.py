@@ -3,34 +3,34 @@ from sys import stdin
 
 
 def ans():
-  return bfs(s)
+    return bfs(s)
 
 
 def bfs(S):
-  q = deque()
-  q.append((1, 0, 0))
-  visited[1][0] = True
-  while q:
-    emoji, board, time = q.popleft()
+    q = deque()
+    q.append((1, 0, 0))
+    visited[1][0] = True
+    while q:
+        emoji, board, time = q.popleft()
 
-    if emoji == S:
-      return time
+        if emoji == S:
+            return time
 
-    # 클립보드에 저장
-    if not visited[emoji][emoji]:
-      q.append((emoji, emoji, time + 1))
-      visited[emoji][emoji] = True
+        # 클립보드에 저장
+        if not visited[emoji][emoji]:
+            q.append((emoji, emoji, time + 1))
+            visited[emoji][emoji] = True
 
-    # 붙여넣기
-    if emoji + board <= S and not visited[emoji + board][board]:
-      q.append((emoji + board, board, time + 1))
-      visited[emoji + board][board] = True
+        # 붙여넣기
+        if emoji + board <= S and not visited[emoji + board][board]:
+            q.append((emoji + board, board, time + 1))
+            visited[emoji + board][board] = True
 
-    # 삭제하기
+        # 삭제하기
 
-    if emoji - 1 >= 0 and not visited[emoji - 1][board]:
-      q.append((emoji - 1, board, time + 1))
-      visited[emoji - 1][board] = True
+        if emoji - 1 >= 0 and not visited[emoji - 1][board]:
+            q.append((emoji - 1, board, time + 1))
+            visited[emoji - 1][board] = True
 
 
 s = int(stdin.readline())

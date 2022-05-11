@@ -17,7 +17,7 @@ def sol():
         l = min(l, d)
         r = max(r, d)
 
-    min_answer = float('inf')
+    min_answer = float("inf")
     while l <= r:
         mid = (r + l) // 2
         count = 0
@@ -30,7 +30,7 @@ def sol():
         else:
             min_answer = min(mid, min_answer)
             r = mid - 1
-        ''' 
+        """ 
         극단적으로 휴게소를 1만큼의 간격마다 세운다면 count는 M보다 큰 조건을 만족하는데
         그럴때에도 최솟값이라고 할수는 없음
 
@@ -41,7 +41,7 @@ def sol():
             l = mid + 1
         else:
             r = mid - 1
-        '''
+        """
     return min_answer
 
 

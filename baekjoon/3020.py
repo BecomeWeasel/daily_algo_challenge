@@ -22,7 +22,7 @@ def sol():
     top.sort()
     bottom.sort()
 
-    min_answer = float('inf')
+    min_answer = float("inf")
     count = 0
 
     for h in range(1, H + 1):

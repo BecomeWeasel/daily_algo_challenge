@@ -12,8 +12,7 @@ def sol():
 
     words = list(set(words))
 
-
-    for word in sorted(words, key=lambda x: (len(x),x)):
+    for word in sorted(words, key=lambda x: (len(x), x)):
         print(word)
 
 

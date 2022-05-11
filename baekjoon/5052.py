@@ -42,20 +42,20 @@ class Trie:
         for char in string:
             if char in current_node.children:
                 current_node = current_node.children[char]
-            # 탐색중에 termal 문자열을 만났는데(data in numbers) 
+            # 탐색중에 termal 문자열을 만났는데(data in numbers)
             # 그 밑으로 node들이 더 달려있다면
             # 일관성이 없음
 
-            '''
+            """
             # 매 검색마다 O(N)
             if current_node.data in numbers and len(current_node.children) != 0:
                 return False
-            '''
-            ''' O(L) 강제
+            """
+            """ O(L) 강제
             if current_node.data == string and len(current_node.children)!=0:
                 return False
-            '''
-            if current_node.isTerminal==True and len(current_node.children)!=0:
+            """
+            if current_node.isTerminal == True and len(current_node.children) != 0:
                 return False
 
         return True
@@ -64,7 +64,7 @@ class Trie:
 T = int(stdin.readline())
 
 
-def sol(): # M: 가장 긴 문자열의 길이 L:가장 짧은 길이 #T:O(N*M) , 가장 짧은 문자부터 검색하면 O(N*M+NlogN+L)
+def sol():  # M: 가장 긴 문자열의 길이 L:가장 짧은 길이 #T:O(N*M) , 가장 짧은 문자부터 검색하면 O(N*M+NlogN+L)
     N = int(stdin.readline())
 
     numbers = list()
@@ -77,7 +77,7 @@ def sol(): # M: 가장 긴 문자열의 길이 L:가장 짧은 길이 #T:O(N*M) 
     # 입력 받은 전화번호들을 trie 구조에 추가해줌
     for number in numbers:
         trie.insert(number)
-    
+
     # 가장 짧은 전화번호부터 검색하게
     numbers.sort(key=lambda x: len(x))
 

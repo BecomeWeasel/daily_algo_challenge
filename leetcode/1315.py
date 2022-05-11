@@ -15,7 +15,6 @@ class Solution:
             if grandparent and grandparent.val % 2 == 0:
                 ret += node.val
 
-            return ret + dfs(node.left, parent, node) + dfs(
-                node.right, parent, node)
+            return ret + dfs(node.left, parent, node) + dfs(node.right, parent, node)
 
         return dfs(root, None, None)

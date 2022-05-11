@@ -39,9 +39,10 @@ def sol():
 
         if p == 0:
             return ans
-            
+
         union(p, p - 1, parent_table)
         ans += 1
     return ans
+
 
 print(sol())

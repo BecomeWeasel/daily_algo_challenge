@@ -1,7 +1,7 @@
 from collections import deque
 
 
-class Solution: # T:O(number of island)
+class Solution:  # T:O(number of island)
     def closedIsland(self, grid: int) -> int:
 
         dy = [-1, 1, 0, 0]

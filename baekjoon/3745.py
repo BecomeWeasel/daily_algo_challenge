@@ -7,7 +7,7 @@ def lis(arr):
         return 0
 
     # C[i] means smallest last number of lis subsequences whose length are i
-    INF = float('inf')
+    INF = float("inf")
     C = [INF for _ in range(len(arr) + 1)]
     C[0] = -INF
     # C[1] = arr[0]
@@ -20,7 +20,7 @@ def lis(arr):
             C[tmp_longest] = n
         else:
             # next_loc = search(1, tmp_longest, n, C)
-            next_loc = bisect_left(C,n,1,tmp_longest)
+            next_loc = bisect_left(C, n, 1, tmp_longest)
             C[next_loc] = n
 
     return tmp_longest

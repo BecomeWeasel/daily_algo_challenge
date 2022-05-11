@@ -8,8 +8,8 @@ class Node:
 from collections import deque
 
 
-class Solution: # O(n)
-    def levelOrder(self, root: 'Node') -> List[List[int]]:
+class Solution:  # O(n)
+    def levelOrder(self, root: "Node") -> List[List[int]]:
         result = []
 
         if not root:

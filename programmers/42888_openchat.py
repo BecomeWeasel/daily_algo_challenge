@@ -27,7 +27,7 @@ def solution(record):
         else:
             id_mapping[c[1]] = c[2]
 
-            if c[0] == 'Enter':
+            if c[0] == "Enter":
                 log.append([True, c[1]])
 
     for l in log:

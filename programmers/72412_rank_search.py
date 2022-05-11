@@ -22,12 +22,12 @@ def solution(info, query):
                     person_list["----"].append(rank)
                     continue
 
-                s = ''
+                s = ""
                 for j in l:
                     if j in combi:
                         s += i[j]
                     else:
-                        s += '-'
+                        s += "-"
                 # print(s)
 
                 person_list[s].append(rank)
@@ -41,7 +41,7 @@ def solution(info, query):
 
     for q in query:
         questions = q.split(" and ")
-        t = questions[3].split(' ')
+        t = questions[3].split(" ")
         del questions[3]
         questions.append(t[0])
         questions.append(t[1])
@@ -50,11 +50,11 @@ def solution(info, query):
     # print(person_list["----"])
 
     for query in temp_query:
-        target_query = ''.join(query[:4])
+        target_query = "".join(query[:4])
 
         answer.append(
-            len(person_list[target_query]) -
-            bisect_left(person_list[target_query], int(query[4])))
+            len(person_list[target_query]) - bisect_left(person_list[target_query], int(query[4]))
+        )
 
     # print(person_list["-backend--"])
 

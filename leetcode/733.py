@@ -1,6 +1,5 @@
 class Solution:
-    def floodFill(self, image: List[List[int]], sr: int, sc: int,
-                  newColor: int) -> List[List[int]]:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
         dy = [-1, 1, 0, 0]
         dx = [0, 0, -1, 1]
         start_color = image[sr][sc]
@@ -18,9 +17,9 @@ class Solution:
                         dfs(ny, nx)
 
         # we don't have visited matrix so
-        # without this statement, 
+        # without this statement,
         # fallen into infinited loop
-        if start_color!=newColor:
+        if start_color != newColor:
             dfs(sr, sc)
 
         return image

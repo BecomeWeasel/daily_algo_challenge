@@ -52,7 +52,6 @@ def solution(relation):
 
     # print(col_N,row_N)
 
-
     for number_of_c in range(1, col_N + 1):
         for combi in combinations(range(col_N), number_of_c):
 

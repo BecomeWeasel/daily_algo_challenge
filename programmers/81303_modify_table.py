@@ -16,10 +16,10 @@ def solution(n, k, cmd):
         pre[i] = i - 1
 
     for order in cmd:
-        order_set = order.split(' ')
+        order_set = order.split(" ")
 
         if len(order_set) == 1:
-            if order_set[0] == 'C':
+            if order_set[0] == "C":
                 # 마지막행일경우는 위 행 선택
                 if nxt[cur] == n:
                     nxt[pre[cur]] = n
@@ -35,7 +35,7 @@ def solution(n, k, cmd):
 
                     cur = nxt[cur]
 
-            elif order_set[0] == 'Z':
+            elif order_set[0] == "Z":
                 tos = remove.pop()
 
                 if nxt[tos] == n:
@@ -47,18 +47,18 @@ def solution(n, k, cmd):
                 cut[tos] = False
 
         else:
-            if order_set[0] == 'U':
+            if order_set[0] == "U":
                 for _ in range(int(order_set[1])):
                     cur = pre[cur]
 
-            elif order_set[0] == 'D':
+            elif order_set[0] == "D":
                 for _ in range(int(order_set[1])):
                     cur = nxt[cur]
 
-    answer = ''
+    answer = ""
     for c in cut:
         if c:
-            ret += 'X'
+            ret += "X"
         else:
-            ret += 'O'
+            ret += "O"
     return ret

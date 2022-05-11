@@ -12,9 +12,7 @@ def solution(user_id, banned_id):
 
     # candidate_list에
     # 각각의 ban_id에 대해서 밴의 대상이 될수도 있는 user_id를 모아놓음
-    candidate_list = [
-        get_ban_candidate_list(user_id, ban_id) for ban_id in banned_id
-    ]
+    candidate_list = [get_ban_candidate_list(user_id, ban_id) for ban_id in banned_id]
 
     # 가능한 중복순열을 모두 구함
     product_list = list(product(*candidate_list))
@@ -26,7 +24,7 @@ def solution(user_id, banned_id):
         # 중복되지 않고
         if len(combi) == len(set(combi)):
             unique_value = sum(2**idx for idx in combi)
-            
+
             if unique_value not in answer:
                 answer.add(unique_value)
 
@@ -70,7 +68,7 @@ def get_ban_candidate_list(user_id_set, banned_id):
         for char_user, char_banned in zip(user_id, banned_id):
             # 가려진 표시를 제외하고 나머지 부분이 유저부분과 다르다면
             # candidate이 될수 없음
-            if char_banned != '*' and char_user != char_banned:
+            if char_banned != "*" and char_user != char_banned:
                 is_candidate = False
 
         # idx를 넣어서 리턴
@@ -80,7 +78,7 @@ def get_ban_candidate_list(user_id_set, banned_id):
     return candidate
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # 가장 시간이 오래걸릴것으로 예상되는 TC
     # print(
     #     solution([
@@ -93,5 +91,7 @@ if __name__ == '__main__':
 
     # 예제 3번 TC
     print(
-        solution(["frodo", "fradi", "crodo", "abc123", "frodoc"],
-                 ["fr*d*", "*rodo", "******", "******"]))
+        solution(
+            ["frodo", "fradi", "crodo", "abc123", "frodoc"], ["fr*d*", "*rodo", "******", "******"]
+        )
+    )

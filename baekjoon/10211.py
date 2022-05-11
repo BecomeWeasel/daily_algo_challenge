@@ -6,7 +6,7 @@ T = int(stdin.readline())
 def sol():
 
     N = int(stdin.readline())
-    dp = [-float('inf') for _ in range(1000)]
+    dp = [-float("inf") for _ in range(1000)]
 
     numbers = list(map(int, stdin.readline().split()))
     dp[0] = numbers[0]

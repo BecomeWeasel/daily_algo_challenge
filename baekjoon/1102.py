@@ -119,7 +119,7 @@ def sol():
     status = []
 
     for i in range(N):
-        status.append(True if temp[i] == 'Y' else False)
+        status.append(True if temp[i] == "Y" else False)
 
     # 표현할수 있는 경우의 수를 생각하면,
     # 발전소가 N개니까 상태는 2^N개
@@ -161,10 +161,11 @@ def sol():
 
         for on in range(N):
             # 먼저 켜져 있는 발전소를 찾자
-            if bit_status & (1<<on):
+            if bit_status & (1 << on):
                 # 그 다음에 이제 켤 발전소를 정하자
                 for off in range(N):
-                    if off == on: continue
+                    if off == on:
+                        continue
                     # 아무거나 꺼져 있는 발전소를 찾자
                     if not (bit_status & (1 << off)):
                         # 꺼진 발전소가 켜진 bit 상황에서
@@ -176,7 +177,10 @@ def sol():
                         # 즉 off 상황을 X, 그게 켜진 상황을 Y라 하면,
 
                         # X=Y+(off->on에서의 전환 비용)
-                        dp[bit_status] = min(dp[bit_status], calc(plant_count + 1, bit_status | (1 << off)) + cost[on][off])
+                        dp[bit_status] = min(
+                            dp[bit_status],
+                            calc(plant_count + 1, bit_status | (1 << off)) + cost[on][off],
+                        )
 
         # 이제 이걸 다 계산해주면,
         # 특정 발전소가 켜져있을때 어떤 값으로 켜져있었는지 알 수 있다.
