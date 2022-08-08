@@ -1,4 +1,4 @@
-from sys import stdin
+from sys import stdin, stdout
 
 
 def sol():
@@ -84,9 +84,9 @@ def sol():
         if dp[i][j] != -1:
             return dp[i][j]
         # 만약 [3,3] 이면 이건 길이 1인 펠린드롬인거지
-        if i == j:
-            dp[i][j] = 1
-            return dp[i][j]
+        # if i == j:
+        #     dp[i][j] = 1
+        #     return dp[i][j]
         else:
             # num(i)와 num(j)가 같다는건 [i-1,j+1]에 i와 j를 추가한 상황이라고 보자.
             # 그럼 i와 j말고 [i-1,j+1] 구간만 검사하자
@@ -100,14 +100,12 @@ def sol():
                 dp[i][j] = 0
                 return 0
 
+    for i in range(N):
+        answer[i][i] = 1
+
     for s, e in query:
-        # print("-----")
-        # print("-----")
-        ret = cal(s - 1, e - 1, answer, numbers)
-        print(ret)
-        # print(f"answer is {ret}")
-        # print("-----")
-        # print("-----")
+        stdout.write(str(cal(s - 1, e - 1, answer, numbers)) + "\n")
+        # print(ret)
 
 
 sol()
